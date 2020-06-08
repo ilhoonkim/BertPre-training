@@ -235,13 +235,13 @@ config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 �
 **1. 학습 코드에 다음과 같이 추가하여 tf.logging 을 통해 쉘에서 loss 가 떨어지는 것을 주기적으로 프린팅하는 방법입니다.**
 **run_pretraining.py** 참조
 ```
-      logging_hook = tf.train.LoggingTensorHook({"loss": total_loss}, every_n_iter=10)
-      output_spec = tf.contrib.tpu.TPUEstimatorSpec(
-          mode=mode,
-          loss=total_loss,
-          train_op=train_op,
-          training_hooks=[logging_hook],
-          scaffold_fn=scaffold_fn)
+logging_hook = tf.train.LoggingTensorHook({"loss": total_loss}, every_n_iter=10)
+output_spec = tf.contrib.tpu.TPUEstimatorSpec(
+    mode=mode,
+    loss=total_loss,
+    train_op=train_op,
+    training_hooks=[logging_hook],
+    scaffold_fn=scaffold_fn)
 ```
 그러면 학습 시에 쉘에 다음과 같이 정해진 liter마다 loss가 프린트 됩니다.
 <img src = "https://user-images.githubusercontent.com/45644085/84039855-d1718b00-a9dc-11ea-8101-53cc21c451dc.JPG" align = "center">
