@@ -254,13 +254,13 @@ def create_instances_from_document(
     segment = document[i]
     current_chunk.append(segment)
     current_length += len(segment)
-    if i == len(document) - 1 or current_length >= target_seq_length:
+    if i == len(document) - 1 len(current_chunk) == 2: #세그먼트를 무조건 2개씩만 넣게 처리  #or current_length >= target_seq_length:
       if current_chunk:
         # `a_end` is how many segments from `current_chunk` go into the `A`
         # (first) sentence.
         a_end = 1
-        if len(current_chunk) >= 2:
-          a_end = rng.randint(1, len(current_chunk) - 1)
+        #if len(current_chunk) >= 2:   # 앞 부분은 세그먼트 1개만 넣기
+        #  a_end = rng.randint(1, len(current_chunk) - 1)
 
         tokens_a = []
         for j in range(a_end):
@@ -286,8 +286,8 @@ def create_instances_from_document(
           random_start = rng.randint(0, len(random_document) - 1)
           for j in range(random_start, len(random_document)):
             tokens_b.extend(random_document[j])
-            if len(tokens_b) >= target_b_length:
-              break
+            #if len(tokens_b) >= target_b_length:
+            break # 두 번째 문장에도 한개의 세그먼트만 넣기
           # We didn't actually use these segments so we "put them back" so
           # they don't go to waste.
           num_unused_segments = len(current_chunk) - a_end
