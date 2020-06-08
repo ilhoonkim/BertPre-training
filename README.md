@@ -194,3 +194,26 @@ python run_pretraining.py \
 - num_warmup_steps : 오버슈팅을 방지하기 위해 해당 step까지 learning_rate를 점진적으로 증가
 - learning_rate : 한 번의 학습마다 얼마만큼 학습할지에 대한 여부
 
+위의 설명 중 bert conifg 파일에 대해서 좀 더 자세히 알아보겠습니다.
+```
+{
+  "attention_probs_dropout_prob": 0.1, 
+  "directionality": "bidi", 
+  "hidden_act": "gelu", 
+  "hidden_dropout_prob": 0.1, 
+  "hidden_size": 768, 
+  "initializer_range": 0.02, 
+  "intermediate_size": 3072, 
+  "max_position_embeddings": 512, 
+  "num_attention_heads": 12, 
+  "num_hidden_layers": 12, 
+  "pooler_fc_size": 768, 
+  "pooler_num_attention_heads": 12, 
+  "pooler_num_fc_layers": 3, 
+  "pooler_size_per_head": 128, 
+  "pooler_type": "first_token_transform", 
+  "type_vocab_size": 2, 
+  "vocab_size": 2943
+}
+```
+config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 구성되어 있습니다.   
