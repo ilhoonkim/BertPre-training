@@ -33,6 +33,7 @@ python create_pretraining_data.py \
 하이퍼파라미터에서 masked_lm_prob, max_predictions_per_seq 가 MASK 처리와 관련되어 있습니다.  
 - masked_lm_prob는 각 example의 토큰 중에서 얼마만큼의 비율을 마스킹 처리할것이냐와 연관됩니다. 보통은 0.15(15%)로 설정되어 있어 크게 바꾸지 않고 사용하고 있습니다.  
 - max_predictions_per_seq 는 한 example 에서 최대 마스킹될 수 있는 토큰의 갯수입니다. max_seq_length * masked_lm_prob는 라고 생각하시면 되겠습니다.
+- 마스킹은 해당 토큰을 [MASK]로 치환합니다.
 
 ### 2. NSP 형태의 인스턴스 만들기
 사전학습용 파일을 만드는데 가장 이해가 어려웠던 부분입니다.  
@@ -43,9 +44,15 @@ NSP를 어떤 형태로 만들어서 학습하는지 이해가 필요합니다.
 교도소 이야기구먼.. 솔직히 재미는 없다.    
 이런 별로인 영화에는 솔직히 평점 2드립니다. 
 
->>> tokens: [CLS] 교도소_ 이야기 구먼_ .. 솔직히_ 재미 는_ 없다 .. [SEP] 이런 별로 인_ [MASK] 에는_ [MASK] 평점 2 드립니다_[SEP]
+>>> tokens: [CLS] 교도소_ 이야기 [MASK] .. 솔직히_ 재미 [MASK] 없다 .. [SEP] 이런 별로 인_ [MASK] 에는_ [MASK] 평점 2 드립니다_[SEP]
 >>> segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1
->>> is_random_next: True
->>> masked_lm_positions: 11 15 16 22
->>> masked_lm_labels: 조정 기대했던_ 내 인
+>>> is_random_next: True  # 두 문장이 실제로 이어진 문장인지의 여부
+>>> masked_lm_positions: 3 7 14 16   #마스킹된 토큰의 위치 
+>>> masked_lm_labels: 구먼_ 는_ 영화 솔직히_  # 마스킹된 토큰
 ```
+다음은 NSP 형태의 인스턴스를 보여드리기 위해 이미 잘 가공된 인스턴스를 보여드렸습니다. 
+```
+[CLS] 첫 문장 [SEP] 다음문장 [SEP]
+>>> is_random_next: True  두 문장이 실제로 이어진 문장인지 아닌지에 대한 여부
+```
+NSP를 학습하기 위해서는 다음과 같은 형태로 인스턴스가 만들어져야 되는 것입니다.
