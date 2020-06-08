@@ -101,4 +101,43 @@ NSP를 학습하기 위해서는 다음과 같은 형태로 인스턴스가 만�
 >>> is_random_next: True
 ```
 
-이러한 결과값을 얻기 위해서 **Create_pretraining_data.py** 
+이러한 결과값을 얻기 위해서 **Create_pretraining_data.py** 의 일부분을 수정해주었습니다.
+```
+def create_instances_from_document(
+    all_documents, document_index, max_seq_length, short_seq_prob,
+    masked_lm_prob, max_predictions_per_seq, vocab_words, rng):
+    ...
+    ...
+    ...
+    ...
+      if i == len(document) - 1 or len(current_chunk) == 2: #current_length >= target_seq_length:
+    
+```
+기존에 max_seq_length 까지 문장을 이어붙이는 것을 고치고자 current_chunk에 2개의 segment 문장이 들어오는 순간 그만두도록 처리했습니다.
+
+```
+  ...
+  ...
+      a_end = 1
+      #if len(current_chunk) >= 2: 
+      #  a_end = rng.randint(1, len(current_chunk) - 1)
+      tokens_a = []
+      for j in range(a_end):
+        tokens_a.extend(current_chunk[j]) 
+    ...
+    ...
+```
+tokens_a 부분에 몇개의 segment를 넣는지 결정하는 a_end를 1로 픽스하여 무조건 한 문장만 넣도록 처리했습니다.
+current_chunk 안에 문장이 2개이므로 자동으로 남은 문장이 tokens_b에 들어가게 됩니다.
+
+
+```
+      random_document = all_documents[random_document_index]
+      random_start = rng.randint(0, len(random_document) - 1)
+      for j in range(random_start, len(random_document)):
+        tokens_b.extend(random_document[j])
+        #if len(tokens_b) >= target_b_length:
+        break
+
+```
+tokens_b 의 경우에도 max_seq_length 직전까지 random 문장을 추가하므로 한 문장만 넣도록 처리하였습니다.
