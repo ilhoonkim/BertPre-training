@@ -31,5 +31,5 @@ python create_pretraining_data.py \
 ```
 마스크 처리는 보통 디폴트값을 유지해서 학습했습니다.   
 하이퍼파라미터에서 masked_lm_prob, max_predictions_per_seq 가 MASK 처리와 관련되어 있습니다.  
-masked_lm_prob는 각 example의 토큰 중에서 얼마만큼의 비율을 마스킹 처리할것이냐와 연관됩니다. 보통은 0.15(15%)로 설정되어 있어 크게 바꾸지 않고 사용하고 있습니다.  
-max_predictions_per_seq 는 한 example 에서 최대 마스킹될 수 있는 토큰의 갯수입니다. max_seq_length * masked_lm_prob는 라고 생각하시면 되겠습니다.
+- masked_lm_prob는 각 example의 토큰 중에서 얼마만큼의 비율을 마스킹 처리할것이냐와 연관됩니다. 보통은 0.15(15%)로 설정되어 있어 크게 바꾸지 않고 사용하고 있습니다.  
+- max_predictions_per_seq 는 한 example 에서 최대 마스킹될 수 있는 토큰의 갯수입니다. max_seq_length * masked_lm_prob는 라고 생각하시면 되겠습니다.
