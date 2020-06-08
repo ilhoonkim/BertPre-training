@@ -8,3 +8,4 @@ BERT GITHUB에서 내려받은 소스를 그대로 사용하기에는 한글 데
 **Create_pretraining_data.py** 파일 참조
 
 <img src ="https://user-images.githubusercontent.com/45644085/83987708-216c3580-a97c-11ea-89e0-225f7ebae602.png" align="center">
+
