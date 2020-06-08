@@ -179,6 +179,18 @@ python run_pretraining.py \
   --learning_rate=2e-5
 ```
 다음은 BERT github에서 예시로 제공하는 사전학습 명령어입니다.   
+
 각 argument가 의미하는 바는 다음과 같습니다.   
 - input_file : 사전학습을 위해 준비한 인스턴스 파일(Create_pretraining_data.py 의 실행 결과 output_file)
-- output_dir : 사전학습 모델이 저장될 
+- output_dir : 사전학습 모델이 저장될 경로
+- do_train : 학습 여부
+- do_eval : 검증 여부
+- bert_config_file : BERT 학습을 위한 모델 구성 관련 json 파일
+- init_checkpoint : 학습을 이어할 모델 경로
+- train_bath_size : 한 번에 몇 개의 example을 학습하는지 (학습 속도와 연관)
+- max_seq_length : 하나의 문장이 가질 수 있는 최대 토큰 수
+- max_predictions_per_seq : 한 문장내에 예측하는 최대 토큰 수(최대 MASK 수)
+- num_train_steps : 목표 학습량
+- num_warmup_steps : 오버슈팅을 방지하기 위해 해당 step까지 learning_rate를 점진적으로 증가
+- learning_rate : 한 번의 학습마다 얼마만큼 학습할지에 대한 여부
+
