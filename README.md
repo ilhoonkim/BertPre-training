@@ -141,7 +141,18 @@ current_chunk 안에 문장이 2개이므로 자동으로 남은 문장이 token
 
 ```
 tokens_b 의 경우에도 max_seq_length 직전까지 random 문장을 추가하므로 한 문장만 넣도록 처리하였습니다.   
-   
+
+```
+...
+...
+flags.DEFINE_float(
+    "short_seq_prob",1,  #0.1,
+    "Probability of creating sequences which are shorter than the "
+    "maximum length.")
+```
+해당 파라미터는 default 값이 0.1인데 1로 변경해주었습니다. 제가 사용할 데이터의 경우는 한 문장이 max_seq_length인 128을 넘는 경우가 하나도 없었기 때문입니다.   
+
+
 다음과 같은 처리를 끝내면 처음에 기획한 형태로 사전학습 인스턴스가 만들어지게 됩니다. 다만 데이터도 기획에 맞도록 준비해야 된다는 점은 변하지 않습니다.  
 **Create_pretraining_nsp_data.py** 참조
 
