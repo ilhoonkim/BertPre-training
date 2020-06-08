@@ -138,7 +138,6 @@ current_chunk 안에 문장이 2개이므로 자동으로 남은 문장이 token
         tokens_b.extend(random_document[j])
         #if len(tokens_b) >= target_b_length:
         break
-
 ```
 tokens_b 의 경우에도 max_seq_length 직전까지 random 문장을 추가하므로 한 문장만 넣도록 처리하였습니다.   
 
