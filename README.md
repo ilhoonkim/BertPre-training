@@ -160,5 +160,25 @@ flags.DEFINE_float(
 비가공 데이터가 들어와도 기획한 형태로 데이터를 바꾸는 코드를 만들어볼까도 했으나 워낙 데이터마다 형태가 달라서 우선은 생략하겠습니다.
 
 ## 사전학습 하기
-지금까지는 사전학습을 하기 위해 비가공 상태의 텍스트 데이터를 인스턴스로 바꿔주는 일련의 과정을 확인하고 수정해보았습니다.   
+지금까지는 사전학습을 하기 위해 비가공 상태의 텍스트 데이터를 사전학습용 인스턴스로 바꿔주는 일련의 과정을 확인하고 수정해보았습니다.   
 사실 사전학습할 인스턴스 파일이 만들어지면 그 이후는 하이퍼파라미터의 변경 정도의 일만 남았을 뿐이라고 봐도 무방합니다.
+
+```
+python run_pretraining.py \
+  --input_file=/tmp/tf_examples.tfrecord \
+  --output_dir=/tmp/pretraining_output \
+  --do_train=True \
+  --do_eval=True \
+  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+  --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
+  --train_batch_size=32 \
+  --max_seq_length=128 \
+  --max_predictions_per_seq=20 \
+  --num_train_steps=20 \
+  --num_warmup_steps=10 \
+  --learning_rate=2e-5
+```
+다음은 BERT github에서 예시로 제공하는 사전학습 명령어입니다.   
+각 argument가 의미하는 바는 다음과 같습니다.   
+- input_file : 사전학습을 위해 준비한 인스턴스 파일(Create_pretraining_data.py 의 실행 결과 output_file)
+- output_dir : 사전학습 모델이 저장될 
