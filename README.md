@@ -253,3 +253,6 @@ config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 �
   >>> pip install tensorboard
   >>> tensorboard --logdir=$모델학습경로
 ```
+경로만 지정해서 텐서보드를 작동해주면 됩니다.
+<img width="605" alt="tensorboard_scalar_runs" src="https://user-images.githubusercontent.com/45644085/84040986-42fe0900-a9de-11ea-9396-865934f07c07.png">
+
