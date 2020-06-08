@@ -6,4 +6,4 @@ BERT GITHUB에서 내려받은 소스를 그대로 사용하기에는 한글 데
 따라서 BERT의 사전학습에 대해 이해가 필요했고 하이퍼파라미터나 코드에 수정이 필요할수도 있습니다.
 
 **Create_pretraining_data.py** 파일 참조
-![버트프리트레이닝](https://user-images.githubusercontent.com/45644085/83987708-216c3580-a97c-11ea-89e0-225f7ebae602.png){: .left}
+<img src ="https://user-images.githubusercontent.com/45644085/83987708-216c3580-a97c-11ea-89e0-225f7ebae602.png" align="left">
