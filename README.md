@@ -219,7 +219,7 @@ python run_pretraining.py \
 config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 구성되어 있습니다. 
 모델의 파라미터 크기와 관련된 모델 config인데 BERT의 경우 base 모델은 12개의 hidden layer, 768개의 hidden_size, 12개의 attention head로 구성되어 있습니다. 해당 크기에 따라 모델의 사이즈가 정해지고 tiny - samll - medium - base - large 로 나뉘어지고 사이즈가 클수록 성능이 좋은 것으로 보입니다. 다만 모델의 사이즈가 커질수록 학습 시 파라미터가 그만큼 커지므로 더 많은 리소스와 시간이 필요합니다. 
 
-**BERT MODEL SIZE
+**BERT MODEL SIZE**
 |   |Hidden_layer|Hidden_size|attention_head|
 |---|:---:|:---:|:---:|
 | **tiny**  |2|128|8|
