@@ -234,6 +234,7 @@ config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 �
 저는 학습 진행을 확인하기 위하여 2가지의 방법을 사용합니다.   
 
 **1. 학습 코드에 다음과 같이 추가하여 tf.logging 을 통해 쉘에서 loss 가 떨어지는 것을 주기적으로 프린팅하는 방법입니다.**
+**run_pretraining.py** 참조
 ```
       logging_hook = tf.train.LoggingTensorHook({"loss": total_loss}, every_n_iter=10)
       output_spec = tf.contrib.tpu.TPUEstimatorSpec(
