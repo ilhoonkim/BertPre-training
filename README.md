@@ -1,4 +1,4 @@
-# BertTraining
+# Bert Pre-training
 Google에서 제공하는 NLP 모델인 BERT를 통해 한글어 자연어 처리를 시도하는 과정에서 더 나은 방식을 찾고 정리하고 있습니다.
 
 # 사전학습 파일 만들기
