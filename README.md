@@ -243,3 +243,4 @@ config 파일은 json의 확장자를 가지는 파일이며 다음과 같이 �
           training_hooks=[logging_hook],
           scaffold_fn=scaffold_fn)
 ```
+![loss](https://user-images.githubusercontent.com/45644085/84039855-d1718b00-a9dc-11ea-8101-53cc21c451dc.JPG)
