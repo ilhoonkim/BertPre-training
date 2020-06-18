@@ -257,8 +257,10 @@ output_spec = tf.contrib.tpu.TPUEstimatorSpec(
 <img width="605" alt="tensorboard_scalar_runs" src="https://user-images.githubusercontent.com/45644085/84040986-42fe0900-a9de-11ea-9396-865934f07c07.png">
 
  - - - 
- 사전학습(Pre-Training)은 다음과 같이 하면 되겠습니다. 다만 사전의 크기나 데이터의 양에 따라 필요 스텝이 다른데 저는 보통 하나의 도메인 관련 데이터에 대해 사전학습하는 경우 50~100만 스텝을 학습합니다.   
- 다만, 전체 도메인의 경우 (ex. Korquad) 더 많은 스텝의 학습이 필요할 수 있습니다.
+ 사전학습(Pre-Training)은 다음과 같이 하면 되겠습니다. 다만 사전의 크기나 데이터의 양에 따라 필요 스텝이 다른데 저는 보통 하나의 도메인 관련 데이터에 대해 사전학습하는 경우 50~100만 스텝을 학습합니다.  다만, 전체 도메인의 경우 (ex. Korquad) 더 많은 스텝의 학습이 필요할 수 있습니다.   
+ GPU 환경에서 학습하는 경우 배치사이즈를 늘려도 이상하게 global steps/sec가 그만큼 줄어들어 크게 속도가 개선되지 않는 현상이 발생하네요.
+ 또한 multi gpu를 활용하기 위해서는 horovod를 사용하여야 한다고 합니다.
+
  
 
 
