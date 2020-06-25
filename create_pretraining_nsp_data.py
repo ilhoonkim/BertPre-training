@@ -254,7 +254,7 @@ def create_instances_from_document(
     segment = document[i]
     current_chunk.append(segment)
     current_length += len(segment)
-    if i == len(document) - 1 len(current_chunk) == 2: #세그먼트를 무조건 2개씩만 넣게 처리  #or current_length >= target_seq_length:
+    if i == len(document) - 1 or len(current_chunk) == 2: #세그먼트를 무조건 2개씩만 넣게 처리  #or current_length >= target_seq_length:
       if current_chunk:
         # `a_end` is how many segments from `current_chunk` go into the `A`
         # (first) sentence.
